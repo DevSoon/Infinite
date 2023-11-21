@@ -45,7 +45,7 @@ jobs:
           node-version: "19"
           yarn-version: "3.6.4"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-    - name: Install dependencies
+      - name: Install dependencies
         run: yarn install --immutable
       - name: Setup Pages
         uses: actions/configure-pages@v3
