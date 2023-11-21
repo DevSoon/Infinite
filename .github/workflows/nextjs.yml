@@ -48,6 +48,8 @@ jobs:
       - name: Enable Corepack
         run: corepack enable
       - name: Install dependencies
+        run: yarn set version berry
+      - name: Install dependencies
         run: yarn install --immutable
       - name: Setup Pages
         uses: actions/configure-pages@v3
