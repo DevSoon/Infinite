@@ -43,12 +43,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "19"
-          yarn-version: "3.6.4"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Enable Corepack
         run: corepack enable
-      - name: Install dependencies
-        run: yarn set version berry
       - name: Install dependencies
         run: yarn install --immutable
       - name: Setup Pages
