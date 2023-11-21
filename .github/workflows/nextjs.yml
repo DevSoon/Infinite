@@ -39,12 +39,13 @@ jobs:
             echo "Unable to determine package manager"
             exit 1
           fi
+      - name: Enable Corepack
+        run: corepack enable
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: "19"
-      - name: Enable Corepack
-        run: corepack enable
+          cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Install dependencies
         run: yarn install --immutable
       - name: Setup Pages
