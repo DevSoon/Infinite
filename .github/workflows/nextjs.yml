@@ -46,6 +46,15 @@ jobs:
         with:
           node-version: "19"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
+      - name: next cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
       - name: Install dependencies
         run: yarn install --immutable
       - name: Setup Pages
